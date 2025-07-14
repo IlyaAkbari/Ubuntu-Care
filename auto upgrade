@@ -1,0 +1,18 @@
+sudo apt install unattended-upgrades
+
+sudo dpkg-reconfigure --priority=low unattended-upgrades
+
+sudo nano /etc/apt/apt.conf.d/50unattended-upgrades
+(you should active this option : 
+"${distro_id}:${distro_codename}";
+"${distro_id}:${distro_codename}-security";
+"${distro_id}:${distro_codename}-updates";
+)
+
+sudo nano /etc/apt/apt.conf.d/10periodic
+(add this and delete old version :
+APT::Periodic::Update-Package-Lists "1";
+APT::Periodic::Download-Upgradeable-Packages "1";
+APT::Periodic::AutocleanInterval "7";
+APT::Periodic::Unattended-Upgrade "1";
+)
