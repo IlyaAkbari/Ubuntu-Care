@@ -1,8 +1,15 @@
 sudo nano /usr/local/bin/optimize-ubuntu.sh
 
-#!/bin/bash
+(add this :
 apt autoremove -y
 apt autoclean -y
 rm -rf /var/cache/apt/archives/*.deb
 sync
 sysctl -w vm.drop_caches=3
+)
+
+sudo chmod +x /usr/local/bin/optimize-ubuntu.sh
+sudo crontab -e
+(add this : 
+30 23 * * * /usr/local/bin/optimize-ubuntu.sh
+"you can change time")
